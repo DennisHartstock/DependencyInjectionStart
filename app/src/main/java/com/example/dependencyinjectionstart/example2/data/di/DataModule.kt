@@ -17,6 +17,11 @@ interface DataModule {
     fun bindRemoteDataSource(impl: ExampleRemoteDataSourceImpl): ExampleRemoteDataSource
 
 //    @Provides
+//    fun provideContext(): Context {
+//        return context
+//    }
+//
+//    @Provides
 //    fun provideLocalDataSource(impl: ExampleLocalDataSourceImpl): ExampleLocalDataSource {
 //        return impl
 //    }
