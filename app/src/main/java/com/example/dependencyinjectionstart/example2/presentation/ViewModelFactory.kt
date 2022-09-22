@@ -2,16 +2,19 @@ package com.example.dependencyinjectionstart.example2.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.dependencyinjectionstart.example2.data.di.ApplicationScope
 import javax.inject.Inject
+import javax.inject.Provider
 
+@ApplicationScope
 class ViewModelFactory @Inject constructor(
-    private val viewModels: @JvmSuppressWildcards Map<String, ViewModel>
+    private val viewModelsProviders: @JvmSuppressWildcards Map<String, Provider<ViewModel>>
 //private val exampleUseCase: ExampleUseCase,
 //private val repository: ExampleRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return viewModels[modelClass.simpleName] as T
+        return viewModelsProviders[modelClass.simpleName]?.get() as T
 
 //        if (modelClass == ExampleViewModel::class.java) {
 //            return ExampleViewModel(exampleUseCase) as T
