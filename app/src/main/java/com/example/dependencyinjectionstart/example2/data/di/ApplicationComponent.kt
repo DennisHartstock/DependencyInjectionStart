@@ -2,6 +2,7 @@ package com.example.dependencyinjectionstart.example2.data.di
 
 import android.content.Context
 import com.example.dependencyinjectionstart.example2.presentation.MainActivity
+import com.example.dependencyinjectionstart.example2.presentation.MainActivity2
 import dagger.BindsInstance
 import dagger.Component
 
@@ -16,6 +17,8 @@ interface ApplicationComponent {
 //    fun getApiService():ExampleApiService
 
     fun inject(activity: MainActivity)
+
+    fun inject(activity: MainActivity2)
 
 //    @Component.Builder
 //    interface ApplicationComponentBuilder {
