@@ -8,13 +8,13 @@ import javax.inject.Provider
 
 @ApplicationScope
 class ViewModelFactory @Inject constructor(
-    private val viewModelsProviders: @JvmSuppressWildcards Map<String, Provider<ViewModel>>
+    private val viewModelsProviders: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 //private val exampleUseCase: ExampleUseCase,
 //private val repository: ExampleRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return viewModelsProviders[modelClass.simpleName]?.get() as T
+        return viewModelsProviders[modelClass]?.get() as T
 
 //        if (modelClass == ExampleViewModel::class.java) {
 //            return ExampleViewModel(exampleUseCase) as T
